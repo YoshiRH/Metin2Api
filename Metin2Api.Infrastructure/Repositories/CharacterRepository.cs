@@ -13,6 +13,16 @@ namespace Metin2Api.Infrastructure.Repositories
             if(character == null)
                 throw new ArgumentNullException(nameof(character));
 
+            if (character.Inventory == null)
+            {
+                character.Inventory = new Inventory
+                {
+                    Id = character.Id,
+                    Items = new List<IItem>()
+                };
+                _context.Inventories.Add(character.Inventory);
+            }
+
             await _context.Characters.AddAsync(character);
             await _context.SaveChangesAsync();
         }

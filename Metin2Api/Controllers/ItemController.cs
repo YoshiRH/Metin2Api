@@ -5,7 +5,7 @@ using Metin2Api.Application.Services;
 
 namespace Metin2Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class ItemController(IItemService itemService) : ControllerBase
     {
@@ -15,6 +15,13 @@ namespace Metin2Api.Controllers
         public async Task<ActionResult> AddItem(int characterId, CreateItemDto itemDto)
         {
             var result = await _itemService.AddItemToCharacterAsync(itemDto, characterId);
+
+            if (result.Contains("exist"))
+                return NotFound();
+
+            if (result.Contains("missing"))
+                return BadRequest();
+
             return Ok(result);
         }
 

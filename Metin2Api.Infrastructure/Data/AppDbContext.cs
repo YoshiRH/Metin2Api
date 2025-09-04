@@ -19,12 +19,6 @@ namespace Metin2Api.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Just inheritance for IItem
-            modelBuilder.Entity<IItem>()
-                .HasDiscriminator<string>("ItemType")
-                .HasValue<WeaponItem>("Weapon")
-                .HasValue<ArmorItem>("Armor");
-
             // 1:1
             modelBuilder.Entity<Character>()
                 .HasOne(c => c.Inventory)

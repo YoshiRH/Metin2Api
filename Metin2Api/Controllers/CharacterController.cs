@@ -5,7 +5,7 @@ using Metin2Api.Application.Services;
 
 namespace Metin2Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class CharacterController(ICharacterService characterService) : ControllerBase
     {
@@ -25,7 +25,7 @@ namespace Metin2Api.Controllers
             return Ok(characters);
         }
 
-        [HttpGet("Accounts/{id}")]
+        [HttpGet("Characters/{id}")]
         public async Task<ActionResult> GetCharacterByAccount(int id)
         {
             var character = await _characterService.GetCharacterByIdAsync(id);
@@ -44,13 +44,6 @@ namespace Metin2Api.Controllers
         {
             var characters = await _characterService.GetTop10CharactersByLevelAsync();
             return Ok(characters);
-        }
-
-        [HttpGet("Characters/{id}/Items")]
-        public async Task<ActionResult> GetCharacterItems(int id)
-        {
-            var items = await _characterService.GetItemsByCharacterIdAsync(id);
-            return Ok(items);
         }
 
         [HttpDelete("Characters/{id}")]

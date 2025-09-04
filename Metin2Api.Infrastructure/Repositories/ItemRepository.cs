@@ -17,6 +17,20 @@ namespace Metin2Api.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<IItem?> AddItemToCharacterAsync(int charactedId, IItem item)
+        {
+            var character = await _context.Characters.FindAsync(charactedId);
+
+            if (character == null)
+                return null;
+
+
+            character.Inventory.Items.Add(item);
+            await _context.SaveChangesAsync();
+
+            return item;
+        }
+
         public async Task<IEnumerable<IItem>> GetAllItemsAsync()
         {
             var items = await _context.Items.ToListAsync();

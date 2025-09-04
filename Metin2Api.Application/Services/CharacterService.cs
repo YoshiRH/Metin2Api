@@ -32,6 +32,7 @@ namespace Metin2Api.Application.Services
                 Kingdom = character.Kingdom,
                 Class = character.Class,
                 AccountId = accountId,
+                Inventory = null
             };
 
             await _characterRepository.AddCharacterAsync(newCharacter);
@@ -114,10 +115,6 @@ namespace Metin2Api.Application.Services
             return formatedCharacter;
         }
 
-        public Task<IEnumerable<ItemDto>> GetItemsByCharacterIdAsync(int characterId)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<IEnumerable<CharacterDto>> GetTop10CharactersByLevelAsync()
         {

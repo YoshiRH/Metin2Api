@@ -15,7 +15,8 @@ builder.Services.AddOpenApi();
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+    b => b.MigrationsAssembly("Metin2Api.Infrastructure")));
 
 
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();

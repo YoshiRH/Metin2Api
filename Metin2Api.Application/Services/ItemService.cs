@@ -19,17 +19,18 @@ namespace Metin2Api.Application.Services
             if(item == null)
                 return "Item missing";
 
-            IItem newItem = item.Type.ToLower() switch
+            var newItem = new IItem
             {
-                "weapon" => new WeaponItem { AttackPower = item.Value, Name = item.Name },
-                "armor" => new ArmorItem { DefensePower = item.Value, Name = item.Name },
-                _ => throw new Exception("Invalid Item type")
+                Name = item.Name,
+                Value = item.Value,
+                InventoryId = character.Inventory.Id,
+                Inventory = character.Inventory
             };
 
-            character.Inventory.Items.Add(newItem);
-            await _itemRepository.AddItemAsync(newItem);
+            var addedItem = await _itemRepository.AddItemToCharacterAsync(characterId, newItem);
 
-            await _itemRepository.SaveChangesAsync();
+            if (addedItem == null)
+                return "Failed to add item";
 
             return "Item added";
         }
@@ -46,8 +47,7 @@ namespace Metin2Api.Application.Services
                 {
                     Id = i.Id,
                     Name = i.Name,
-                    Type = GetType(i),
-                    Value = GetValue(i),
+                    Value = i.Value,
                     InventoryId = i.InventoryId
                 });
 
@@ -64,25 +64,11 @@ namespace Metin2Api.Application.Services
             {
                 Id = item.Id,
                 Name = item.Name,
-                Type = GetType(item),
-                Value = GetValue(item),
+                Value = item.Value,
                 InventoryId = item.InventoryId
             };
 
             return formatedItem;
         }
-
-        private static int GetValue(IItem item) => item switch
-        {
-            WeaponItem w => w.AttackPower,
-            ArmorItem a => a.DefensePower,
-            _ => 0
-        };
-        private static string GetType(IItem item) => item switch
-        {
-            WeaponItem w => "Weapon",
-            ArmorItem a => "Armor",
-            _ => "null"
-        };
     }
 }

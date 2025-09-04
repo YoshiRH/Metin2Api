@@ -6,7 +6,7 @@ using Metin2Api.Application.Dtos;
 
 namespace Metin2Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class AccountController(IAccountService accountService) : ControllerBase
     {

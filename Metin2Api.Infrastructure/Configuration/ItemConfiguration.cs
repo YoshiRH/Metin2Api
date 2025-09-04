@@ -10,6 +10,7 @@ namespace Metin2Api.Infrastructure.Configuration
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Value).IsRequired().HasMaxLength(200);
         }
     }
 }
