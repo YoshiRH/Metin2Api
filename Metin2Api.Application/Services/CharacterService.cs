@@ -40,13 +40,17 @@ namespace Metin2Api.Application.Services
             return "Character created";
         }
 
-        public async Task DeleteCharacterAsync(CharacterDto character)
+        public async Task<bool> DeleteCharacterAsync(int charactedId)
         {
-            if( character == null ) 
-                throw new ArgumentNullException(nameof(character));
+            var character = await _characterRepository.GetCharacterByIdAsync(charactedId);
+
+            if (character == null)
+                return false;
 
             await _characterRepository.DeleteCharacterAsync(character.Id);
             await _characterRepository.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<IEnumerable<CharacterDto>> GetAllCharactersAsync()

@@ -7,5 +7,8 @@
         public string Name { get ; set; } = string.Empty;
         public int AttackPower { get; set; }
         public int requiredLevel { get; set; }
+
+        public int InventoryId { get; set; }
+        public Inventory? Inventory { get; set; }
     }
 }

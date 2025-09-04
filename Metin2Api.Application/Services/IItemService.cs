@@ -7,7 +7,6 @@ namespace Metin2Api.Application.Services
     {
         Task<IEnumerable<ItemDto>> GetAllItemsAsync();
         Task<ItemDto?> GetItemByIdAsync(int itemId);
-        Task AddItemToCharacterAsync(CreateItemDto item, int characterId);
-        Task DeleteItemAsync(ItemDto item);
+        Task<string> AddItemToCharacterAsync(CreateItemDto item, int characterId);
     }
 }

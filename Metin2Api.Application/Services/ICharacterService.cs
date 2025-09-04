@@ -11,6 +11,6 @@ namespace Metin2Api.Application.Services
         Task<CharacterDto?> GetCharacterWithBiggestLvl();
         Task<IEnumerable<CharacterDto>> GetTop10CharactersByLevelAsync();
         Task<string> AddCharacterToAccountAsync(CreateCharacterDto character, int accountId);
-        Task DeleteCharacterAsync(CharacterDto character);
+        Task<bool> DeleteCharacterAsync(int characterId);
     }
 }

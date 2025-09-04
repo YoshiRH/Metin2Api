@@ -7,6 +7,6 @@ namespace Metin2Api.Domain.Repositories
         Task<IEnumerable<IItem>> GetAllItemsAsync();
         Task<IItem?> GetItemByIdAsync(int itemId);
         Task AddItemAsync(IItem item);
-        Task DeleteItemAsync(IItem item);
+        Task SaveChangesAsync();
     }
 }

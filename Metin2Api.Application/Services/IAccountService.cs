@@ -9,6 +9,6 @@ namespace Metin2Api.Application.Services
         Task<IEnumerable<CharacterDto>> GetCharactersByAccountIdAsync(int accountId);
         Task<AccountDto?> GetAccountByIdAsync(int accountId);
         Task<Account> AddAccountAsync(CreateAccountDto account);
-        Task<bool> DeleteAccountAsync(AccountDto account);
+        Task<bool> DeleteAccountAsync(int id);
     }
 }

@@ -17,15 +17,6 @@ namespace Metin2Api.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteItemAsync(IItem item)
-        {
-            if(item == null)
-                throw new ArgumentNullException(nameof(item));
-
-            _context.Items.Remove(item);
-            return _context.SaveChangesAsync();
-        }
-
         public async Task<IEnumerable<IItem>> GetAllItemsAsync()
         {
             var items = await _context.Items.ToListAsync();
@@ -44,6 +35,11 @@ namespace Metin2Api.Infrastructure.Repositories
                 return null;
 
             return item;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

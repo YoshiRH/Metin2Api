@@ -27,9 +27,9 @@ namespace Metin2Api.Application.Services
             return newAccount;
         }
 
-        public async Task<bool> DeleteAccountAsync(AccountDto account)
+        public async Task<bool> DeleteAccountAsync(int id)
         {
-            var existingAccount = await _accountRepository.GetAccountByIdAsync(account.Id);
+            var existingAccount = await _accountRepository.GetAccountByIdAsync(id);
 
             if (existingAccount == null)
                 return false;
