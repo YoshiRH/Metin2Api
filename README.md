@@ -44,7 +44,7 @@ The goal of this project is to simulate **account, character, inventory, item, a
 ---
 
 ## 📂 Project Structure
-Metin2Api/
+Metin2Api/  
 ├── Metin2Api/ → ASP.NET Core Web API (Startup project)  
 │ └── Program.cs  
 ├── Metin2Api.Domain/ → Entities, Enums, Repository interfaces  
