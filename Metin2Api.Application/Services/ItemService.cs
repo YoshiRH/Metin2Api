@@ -19,12 +19,11 @@ namespace Metin2Api.Application.Services
             if(item == null)
                 return "Item missing";
 
-            var newItem = new IItem
+            var newItem = new Item
             {
                 Name = item.Name,
                 Value = item.Value,
-                InventoryId = character.Inventory.Id,
-                Inventory = character.Inventory
+                CharacterId = character.Id
             };
 
             var addedItem = await _itemRepository.AddItemToCharacterAsync(characterId, newItem);
@@ -48,7 +47,7 @@ namespace Metin2Api.Application.Services
                     Id = i.Id,
                     Name = i.Name,
                     Value = i.Value,
-                    InventoryId = i.InventoryId
+                    CharacterId = i.CharacterId
                 });
 
             return formatedItems;
@@ -65,7 +64,7 @@ namespace Metin2Api.Application.Services
                 Id = item.Id,
                 Name = item.Name,
                 Value = item.Value,
-                InventoryId = item.InventoryId
+                CharacterId = item.CharacterId
             };
 
             return formatedItem;

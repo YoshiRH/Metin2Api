@@ -12,25 +12,19 @@ namespace Metin2Api.Infrastructure.Data
 
         public DbSet<Account> Accounts => Set<Account>();
         public DbSet<Character> Characters => Set<Character>();
-        public DbSet<IItem> Items => Set<IItem>();
-        public DbSet<Inventory> Inventories => Set<Inventory>();
+        public DbSet<Item> Items => Set<Item>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // 1:1
-            modelBuilder.Entity<Character>()
-                .HasOne(c => c.Inventory)
-                .WithOne(i => i.Character)
-                .HasForeignKey<Inventory>(i => i.CharacterId)
-                .OnDelete(DeleteBehavior.Cascade);
 
             // 1:N
-            modelBuilder.Entity<Inventory>()
+            modelBuilder.Entity<Character>()
                 .HasMany(i => i.Items)
-                .WithOne(it => it.Inventory)
-                .HasForeignKey(it => it.InventoryId);
+                .WithOne(it => it.Character)
+                .HasForeignKey(it => it.CharacterId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // 1:N
             modelBuilder.Entity<Account>()
@@ -38,6 +32,11 @@ namespace Metin2Api.Infrastructure.Data
                 .WithOne(c => c.Account)
                 .HasForeignKey(c => c.AccountId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Item>()
+                .HasOne(c => c.Character)
+                .WithMany(i => i.Items)
+                .HasForeignKey(it => it.CharacterId);
         }
     }
 }

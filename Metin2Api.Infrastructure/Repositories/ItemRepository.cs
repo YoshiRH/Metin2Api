@@ -8,40 +8,31 @@ namespace Metin2Api.Infrastructure.Repositories
     public class ItemRepository(AppDbContext context): IItemRepository
     {
         private readonly AppDbContext _context = context;
-        public async Task AddItemAsync(IItem item)
-        {
-            if(item == null)
-                throw new ArgumentNullException(nameof(item));
 
-            await _context.Items.AddAsync(item);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<IItem?> AddItemToCharacterAsync(int charactedId, IItem item)
+        public async Task<Item?> AddItemToCharacterAsync(int charactedId, Item item)
         {
             var character = await _context.Characters.FindAsync(charactedId);
 
             if (character == null)
                 return null;
 
-
-            character.Inventory.Items.Add(item);
+            await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();
 
             return item;
         }
 
-        public async Task<IEnumerable<IItem>> GetAllItemsAsync()
+        public async Task<IEnumerable<Item>> GetAllItemsAsync()
         {
             var items = await _context.Items.ToListAsync();
             
             if(items == null || !items.Any())
-                return Enumerable.Empty<IItem>();
+                return Enumerable.Empty<Item>();
 
             return items;
         }
 
-        public async Task<IItem?> GetItemByIdAsync(int itemId)
+        public async Task<Item?> GetItemByIdAsync(int itemId)
         {
             var item = await _context.Items.FindAsync(itemId);
 

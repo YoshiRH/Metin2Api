@@ -5,7 +5,7 @@ namespace Metin2Api.Infrastructure.Configuration
 {
     public class ItemConfiguration
     {
-        public void Configure(EntityTypeBuilder<IItem> builder)
+        public void Configure(EntityTypeBuilder<Item> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();

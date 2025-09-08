@@ -32,6 +32,13 @@ namespace Metin2Api.Controllers
             return Ok(character);
         }
 
+        [HttpGet("Characters/{id}/Items")]
+        public async Task<ActionResult> GetCharacterItems(int characterId)
+        {
+            var items = await _characterService.GetCharacterItemsAsync(characterId);
+            return Ok(items);
+        }
+
         [HttpGet("Ranking/top1")]
         public async Task<ActionResult> GetTop1Character()
         {

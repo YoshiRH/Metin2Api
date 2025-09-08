@@ -13,16 +13,6 @@ namespace Metin2Api.Infrastructure.Repositories
             if(character == null)
                 throw new ArgumentNullException(nameof(character));
 
-            if (character.Inventory == null)
-            {
-                character.Inventory = new Inventory
-                {
-                    Id = character.Id,
-                    Items = new List<IItem>()
-                };
-                _context.Inventories.Add(character.Inventory);
-            }
-
             await _context.Characters.AddAsync(character);
             await _context.SaveChangesAsync();
         }
@@ -70,19 +60,16 @@ namespace Metin2Api.Infrastructure.Repositories
             return character;
         }
 
-        public async Task<IEnumerable<IItem>> GetItemsByCharacterIdAsync(int characterId)
+        public async Task<IEnumerable<Item>> GetItemsByCharacterIdAsync(int characterId)
         {
-            var character = await _context.Characters.FindAsync(characterId);
+            var characterItems = await _context.Characters
+                                        .Include(c => c.Items)
+                                        .FirstOrDefaultAsync(c => c.Id == characterId);
 
-            if(character == null)
-                return new List<IItem>();
+            if (characterItems == null || characterItems.Items == null || !characterItems.Items.Any())
+                return Enumerable.Empty<Item>();
 
-            var inventory = await _context.Inventories.FirstOrDefaultAsync(i => i.CharacterId == characterId);
-
-            if(inventory == null)
-                return new List<IItem>();
-
-            return inventory.Items;
+            return characterItems.Items;
         }
 
         public async Task<IEnumerable<Character>> GetTop10CharactersByLevelAsync()

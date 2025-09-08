@@ -17,6 +17,6 @@ namespace Metin2Api.Domain.Entities
         public Account? Account { get; set; }
 
         // Inventory in character
-        public Inventory Inventory { get; set; } = new();
+        public List<Item> Items { get; set; } = new();
     }
 }

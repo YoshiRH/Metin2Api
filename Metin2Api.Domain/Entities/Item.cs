@@ -1,6 +1,6 @@
 ﻿namespace Metin2Api.Domain.Entities
 {
-    public class IItem
+    public class Item
     {
         // Common Item Properties
         public int Id { get; set; }
@@ -8,7 +8,7 @@
         public int Value { get; set; }
 
         // Foreign key to Inventory
-        public int InventoryId { get; set; }
-        public Inventory Inventory { get; set; } = null!;
+        public int CharacterId { get; set; }
+        public Character? Character { get; set; } = null!;
     }
 }

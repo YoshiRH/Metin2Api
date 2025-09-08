@@ -32,7 +32,7 @@ namespace Metin2Api.Application.Services
                 Kingdom = character.Kingdom,
                 Class = character.Class,
                 AccountId = accountId,
-                Inventory = null
+                Items = new List<Item>(),
             };
 
             await _characterRepository.AddCharacterAsync(newCharacter);
@@ -93,6 +93,30 @@ namespace Metin2Api.Application.Services
             };
             
             return formatedCharacter;
+        }
+
+        public async Task<IEnumerable<ItemDto>> GetCharacterItemsAsync(int characterId)
+        {
+            var character = await _characterRepository.GetCharacterByIdAsync(characterId);
+
+            if(character == null)
+                throw new ArgumentNullException();
+
+            var items = await _characterRepository.GetItemsByCharacterIdAsync(characterId);
+
+            if(items == null)
+                return Enumerable.Empty<ItemDto>(); 
+
+            var formatedItems = items
+                .Select(i => new ItemDto
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Value = i.Value,
+                    CharacterId = i.CharacterId
+                });
+
+            return formatedItems;
         }
 
         public async Task<CharacterDto?> GetCharacterWithBiggestLvl()

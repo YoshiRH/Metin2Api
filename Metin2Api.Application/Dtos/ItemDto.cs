@@ -10,6 +10,6 @@ namespace Metin2Api.Application.Dtos
         public int Value { get; set; }
 
         // Foreign key to Inventory
-        public int InventoryId { get; set; }
+        public int CharacterId { get; set; }
     }
 }

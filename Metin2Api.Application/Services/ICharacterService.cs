@@ -7,6 +7,7 @@ namespace Metin2Api.Application.Services
     {
         Task<IEnumerable<CharacterDto>> GetAllCharactersAsync();
         Task<CharacterDto?> GetCharacterByIdAsync(int id);
+        Task<IEnumerable<ItemDto>> GetCharacterItemsAsync(int characterId);
         Task<CharacterDto?> GetCharacterWithBiggestLvl();
         Task<IEnumerable<CharacterDto>> GetTop10CharactersByLevelAsync();
         Task<string> AddCharacterToAccountAsync(CreateCharacterDto character, int accountId);
