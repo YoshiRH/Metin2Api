@@ -20,7 +20,7 @@ The goal of this project is to simulate **account, character, inventory, item, a
 - **Inventory & Items**
   - Each character has its own inventory.
   - Add and manage multiple items.
-- **Guilds (new!)**
+- **Guilds**
   - Create guilds.
   - Add/remove characters from guilds.
   - Retrieve all characters within a guild.
