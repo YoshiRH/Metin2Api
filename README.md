@@ -45,11 +45,13 @@ The goal of this project is to simulate **account, character, inventory, item, a
 
 ## 📂 Project Structure
 Metin2Api/
-├── Metin2Api/ → ASP.NET Core Web API (Startup project)
-│ └── Program.cs
-├── Metin2Api.Domain/ → Entities, Enums, Repository interfaces
-├── Metin2Api.Application/ → DTOs, Services, Service interfaces
-├── Metin2Api.Infrastructure/ → EF Core DbContext, Repositories, Migrations
+├── Metin2Api/ → ASP.NET Core Web API (Startup project)  
+│ └── Program.cs  
+├── Metin2Api.Domain/ → Entities, Enums, Repository interfaces  
+├── Metin2Api.Application/ → DTOs, Services, Service interfaces  
+├── Metin2Api.Infrastructure/ → EF Core DbContext, Repositories, Migrations  
+
+---
 
 ## 📖 API Endpoints (Examples)
 **Accounts**
