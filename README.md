@@ -1,6 +1,6 @@
 # Metin2 API 🎮
 
-An educational project inspired by the classic MMORPG **Metin2**.  
+An educational project inspired by the classic MMORPG **Metin2** created with Repository pattern with service layer.  
 The goal of this project is to simulate **account, character, inventory, item, and guild management** in a game-like environment, following clean architecture principles.
 
 ---
