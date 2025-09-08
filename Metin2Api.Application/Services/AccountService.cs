@@ -76,7 +76,8 @@ namespace Metin2Api.Application.Services
                     Level = c.Level,
                     Kingdom = c.Kingdom,
                     Class = c.Class,
-                    AccountId = c.AccountId
+                    AccountId = c.AccountId,
+                    GuildId = c.GuildId
                 }).ToList();
 
             return formatedCharacters;

@@ -70,6 +70,7 @@ namespace Metin2Api.Application.Services
                     Kingdom = c.Kingdom,
                     Class = c.Class,
                     AccountId = c.AccountId,
+                    GuildId = c.GuildId
                 });
 
             return formatedCharacters;
@@ -90,6 +91,7 @@ namespace Metin2Api.Application.Services
                 Kingdom = character.Kingdom,
                 Class = character.Class,
                 AccountId = character.AccountId,
+                GuildId = character.GuildId
             };
             
             return formatedCharacter;
@@ -134,6 +136,7 @@ namespace Metin2Api.Application.Services
                 Kingdom = character.Kingdom,
                 Class = character.Class,
                 AccountId = character.AccountId,
+                GuildId = character.GuildId
             };
 
             return formatedCharacter;
@@ -155,8 +158,9 @@ namespace Metin2Api.Application.Services
                 Level = c.Level,
                 Kingdom = c.Kingdom,
                 Class = c.Class,
-                AccountId = c.AccountId
-            });
+                AccountId = c.AccountId,
+                GuildId = c.GuildId
+                });
 
             return formatedCharacters;
         }

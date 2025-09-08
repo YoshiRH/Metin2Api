@@ -16,6 +16,10 @@ namespace Metin2Api.Domain.Entities
         public int AccountId { get; set; }
         public Account? Account { get; set; }
 
+        // Foreign key to Guild
+        public int? GuildId { get; set; }
+        public Guild? Guild { get; set; }
+
         // Inventory in character
         public List<Item> Items { get; set; } = new();
     }

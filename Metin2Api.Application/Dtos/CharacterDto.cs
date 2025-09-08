@@ -15,5 +15,8 @@ namespace Metin2Api.Application.Dtos
         // Foreign key to Account
         public int AccountId { get; set; }
 
+        // Foreign key to Guild
+        public int? GuildId { get; set; }
+
     }
 }

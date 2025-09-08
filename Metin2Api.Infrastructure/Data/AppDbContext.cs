@@ -13,6 +13,7 @@ namespace Metin2Api.Infrastructure.Data
         public DbSet<Account> Accounts => Set<Account>();
         public DbSet<Character> Characters => Set<Character>();
         public DbSet<Item> Items => Set<Item>();
+        public DbSet<Guild> Guilds => Set<Guild>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,10 +34,18 @@ namespace Metin2Api.Infrastructure.Data
                 .HasForeignKey(c => c.AccountId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // 1:1
             modelBuilder.Entity<Item>()
                 .HasOne(c => c.Character)
                 .WithMany(i => i.Items)
                 .HasForeignKey(it => it.CharacterId);
+
+            // 1:N
+            modelBuilder.Entity<Guild>()
+                .HasMany(c => c.Characters)
+                .WithOne(g => g.Guild)
+                .HasForeignKey(c => c.GuildId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
