@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metin2Api", "Metin2Api\Metin2Api.csproj", "{226D7E1A-66DC-425B-8315-34BEBCFAD8D8}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metin2Api.Domain", "Metin2Api.Domain\Metin2Api.Domain.csproj", "{930C19B6-3873-42A8-9879-BBAC23E0E3BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metin2Api.Infrastructure", "Metin2Api.Infrastructure\Metin2Api.Infrastructure.csproj", "{5819EC45-B391-4C3E-8748-3F60399A3E32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metin2Api.Tests", "Metin2Api.Tests\Metin2Api.Tests.csproj", "{9D4DBBEB-521B-419F-908A-32D58A5C5707}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5819EC45-B391-4C3E-8748-3F60399A3E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5819EC45-B391-4C3E-8748-3F60399A3E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5819EC45-B391-4C3E-8748-3F60399A3E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D4DBBEB-521B-419F-908A-32D58A5C5707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4DBBEB-521B-419F-908A-32D58A5C5707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4DBBEB-521B-419F-908A-32D58A5C5707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4DBBEB-521B-419F-908A-32D58A5C5707}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
